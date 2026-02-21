@@ -602,6 +602,9 @@ function Footer() {
         ))}
       </div>
       <div className="footer-bottom">دوري رمضان <span>1447</span> · المديرية الإقليمية للصحة</div>
+      <div className="footer-copy">
+  © {new Date().getFullYear()} EL GHALIA LAYACHI — جميع الحقوق محفوظة
+</div>
     </footer>
   );
 }
@@ -631,7 +634,7 @@ export default function App() {
             <div className="header-logo-wrap"><img src={rsal} alt="المديرية الإقليمية للصحة" className="header-logo-img" /></div>
           </div>
           <div className="header-badge">🌙 رمضان 1447</div>
-          <h1>دوري رمضان الصحي</h1>
+          <h1>دوري رمضان لقطاع الصحة بالعيون</h1>
           <div className="header-sub">البرنامج الكامل للمباريات</div>
         </div>
 
