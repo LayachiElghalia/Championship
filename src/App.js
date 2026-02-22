@@ -1,7 +1,18 @@
 import { useState, useEffect } from "react";
+import { supabase } from './supabaseClient';
 import sante from './assests/sante.webp';
 import fh2 from './assests/fh2.webp';
-import rsal from './assests/rsal.webp';
+import rsal from './assests/rsal.jpeg';
+import chababbm from './assests/chababbm.png';
+import chp from './assests/chp.png';
+import cro from './assests/cro.png';
+import dmsps from './assests/dmsps.png';
+import ispits from './assests/ispits.png';
+import samu from './assests/samu.png';
+import hassan2 from './assests/hassan2.png';
+import marsa from './assests/marsa.png';
+import chighila from './assests/chighila.jpeg';
+import nojom from './assests/nojom.png';
 
 const ADMIN_PASSWORD = "admin1447";
 
@@ -377,14 +388,19 @@ function AllRoundsView() {
 }
 
 function TeamsView() {
-  const emojis = ["","","","","","","","","",""];
+  const logos = [marsa, cro, ispits, dmsps, nojom, hassan2, chababbm, chighila, samu, chp];
   return (
     <div>
       <div className="page-title">👥 الفرق</div>
       <div className="teams-grid">
         {teams.map((t, i) => (
           <div className="team-card" key={t.id}>
-            <div className="team-avatar">{emojis[i]}</div>
+            <div className="team-avatar">
+  {logos[i]
+    ? <img src={logos[i]} alt={t.short} style={{width:"100%",height:"100%",objectFit:"contain",borderRadius:"8px"}} />
+    : ["🏥","🔬","👩‍⚕️","🌿","🏛️","⚕️","⚡","💊","🚑","🏨"][i]
+  }
+</div>
             <div className="team-info"><h3>{t.short}</h3><span>{t.name}</span></div>
           </div>
         ))}
@@ -397,9 +413,7 @@ function TeamsView() {
 function ResultsView() {
   const STORAGE_KEY = "ramadan_results_1447";
 
-  const [results, setResults] = useState(() => {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
-  });
+const [results, setResults] = useState({});
   const [drafts, setDrafts]     = useState({});
   const [editing, setEditing]   = useState({}); // matchIds currently being edited
   const [roundIdx, setRoundIdx] = useState(0);
@@ -411,9 +425,17 @@ function ResultsView() {
   else { setPwErr("كلمة المرور غير صحيحة ❌"); }
 };
 
-  useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(results)); } catch {}
-  }, [results]);
+ useEffect(() => {
+  const fetchResults = async () => {
+    const { data } = await supabase.from("results").select("*");
+    if (data) {
+      const mapped = {};
+      data.forEach((r) => { mapped[r.match_id] = { home: r.home, away: r.away }; });
+      setResults(mapped);
+    }
+  };
+  fetchResults();
+}, []);
 
   const standings = computeStandings(results);
 
@@ -427,15 +449,16 @@ function ResultsView() {
     setDrafts((p) => ({ ...p, [mid]: { ...p[mid], [side]: val } }));
   };
 
-  const onSave = (mid) => {
-    const d = drafts[mid] || {};
-    const h = parseInt(d.home ?? results[mid]?.home, 10);
-    const a = parseInt(d.away ?? results[mid]?.away, 10);
-    if (isNaN(h) || isNaN(a) || h < 0 || a < 0) return;
-    setResults((p) => ({ ...p, [mid]: { home: h, away: a } }));
-    setDrafts((p) => { const n = { ...p }; delete n[mid]; return n; });
-    setEditing((p) => { const n = { ...p }; delete n[mid]; return n; });
-  };
+  const onSave = async (mid) => {
+  const d = drafts[mid] || {};
+  const h = parseInt(d.home ?? results[mid]?.home, 10);
+  const a = parseInt(d.away ?? results[mid]?.away, 10);
+  if (isNaN(h) || isNaN(a) || h < 0 || a < 0) return;
+  await supabase.from("results").upsert({ match_id: mid, home: h, away: a });
+  setResults((p) => ({ ...p, [mid]: { home: h, away: a } }));
+  setDrafts((p) => { const n = { ...p }; delete n[mid]; return n; });
+  setEditing((p) => { const n = { ...p }; delete n[mid]; return n; });
+};
 
   const onEdit = (mid) => setEditing((p) => ({ ...p, [mid]: true }));
 
