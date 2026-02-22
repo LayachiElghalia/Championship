@@ -411,7 +411,6 @@ function TeamsView() {
 
 // ─── Results & Standings ──────────────────────────────────────────────────────
 function ResultsView() {
-  const STORAGE_KEY = "ramadan_results_1447";
 
 const [results, setResults] = useState({});
   const [drafts, setDrafts]     = useState({});
