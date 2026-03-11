@@ -335,6 +335,7 @@ const styles = `
   flex-direction:column;
   align-items:center;
   gap:28px;
+  width:100%;
 }
 
 .bracket-admin-bar{
@@ -349,6 +350,7 @@ const styles = `
   flex-wrap:wrap;
   width:100%;
   max-width:1100px;
+  box-sizing:border-box;
 }
 
 .bracket-admin-bar.open{
@@ -356,10 +358,29 @@ const styles = `
   background:rgba(0,166,81,0.05);
 }
 
+/* SCROLL WRAPPER */
+.bracket-scroll{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:8px;
+}
+
+.bracket-scroll::-webkit-scrollbar{
+  height:8px;
+}
+
+.bracket-scroll::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,0.15);
+  border-radius:20px;
+}
+
 /* MAIN GRID */
 .bracket-container{
-  width:100%;
-  max-width:1100px;
+  width:max-content;
+  min-width:1100px;
+  margin:0 auto;
   display:grid;
   grid-template-columns:270px 140px 250px 140px 270px;
   align-items:center;
@@ -375,8 +396,13 @@ const styles = `
   gap:10px;
 }
 
-.side-left{align-items:flex-end;}
-.side-right{align-items:flex-start;}
+.side-left{
+  align-items:flex-end;
+}
+
+.side-right{
+  align-items:flex-start;
+}
 
 .b-label,
 .b-final-label{
@@ -407,26 +433,23 @@ const styles = `
 
 /* LOGO CONTAINER */
 .b-logo-wrap{
-  width:70px;
-  height:70px;
-  min-width:70px;
-
+  width:32px;
+  height:32px;
+  min-width:32px;
   border-radius:50%;
   overflow:hidden;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:rgba(0,166,81,0.3);
+  background:rgba(255,255,255,0.06);
   border:1px solid rgba(255,255,255,0.14);
 }
 
 /* LOGO IMAGE */
 .b-logo,
 .b-final-logo{
-  width:50px;
-  height:50px;
+  width:24px;
+  height:24px;
   object-fit:contain;
 }
 
@@ -437,22 +460,19 @@ const styles = `
   align-items:center;
   justify-content:space-between;
   gap:14px;
-
   min-height:64px;
   padding:14px 18px;
   min-width:220px;
-
   border:1px solid rgba(255,255,255,0.18);
   background:rgba(255,255,255,0.04);
-
   border-radius:12px;
+  box-sizing:border-box;
 }
 
 /* FINAL SLOT */
 .b-final-slot{
   min-height:70px;
   min-width:240px;
-
   border-color:rgba(245,166,35,0.38);
   background:rgba(245,166,35,0.06);
 }
@@ -469,8 +489,13 @@ const styles = `
 }
 
 /* LOSER STYLE */
-.b-slot.loser{opacity:0.55;}
-.b-final-slot.loser{opacity:0.6;}
+.b-slot.loser{
+  opacity:0.55;
+}
+
+.b-final-slot.loser{
+  opacity:0.6;
+}
 
 /* TEAM NAME */
 .b-name,
@@ -480,11 +505,9 @@ const styles = `
   font-size:14px;
   font-weight:700;
   color:var(--white);
-
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-
   direction:rtl;
   text-align:right;
 }
@@ -502,8 +525,13 @@ const styles = `
   font-weight:900;
 }
 
-.b-score{color:var(--green);}
-.b-final-score{color:var(--gold);}
+.b-score{
+  color:var(--green);
+}
+
+.b-final-score{
+  color:var(--gold);
+}
 
 .b-score.dim,
 .b-final-score.dim{
@@ -514,16 +542,13 @@ const styles = `
 .b-score-input{
   width:40px;
   height:30px;
-
   background:rgba(255,255,255,0.07);
   border:1px solid var(--border);
-
   color:var(--white);
   font-family:'Tajawal',sans-serif;
   font-size:14px;
   font-weight:900;
   text-align:center;
-
   border-radius:8px;
   outline:none;
   -moz-appearance:textfield;
@@ -544,6 +569,45 @@ const styles = `
   flex-direction:column;
   align-items:center;
   gap:10px;
+}
+
+/* CHAMPION BOX */
+.champion-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  width:190px;
+  min-height:90px;
+  margin-top:12px;
+  border-radius:14px;
+  background:rgba(245,166,35,0.08);
+  border:1px solid rgba(245,166,35,0.35);
+  color:var(--gold);
+  text-align:center;
+}
+
+.champion-logo{
+  width:36px;
+  height:36px;
+  object-fit:contain;
+}
+
+.champion-name{
+  font-size:14px;
+  font-weight:900;
+  color:var(--gold);
+}
+
+.champion-placeholder{
+  font-size:13px;
+  font-weight:800;
+  opacity:0.8;
+}
+
+.champion-trophy{
+  font-size:24px;
 }
 
 /* CONNECTORS */
@@ -625,11 +689,9 @@ const styles = `
   font-size:15px;
   font-weight:900;
   color:var(--gold);
-
   background:rgba(245,166,35,0.08);
   border:1px solid rgba(245,166,35,0.25);
   border-radius:12px;
-
   animation:glow 2s ease-in-out infinite alternate;
 }
 
@@ -638,28 +700,32 @@ const styles = `
   to{ text-shadow:0 0 24px rgba(245,166,35,0.9); }
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* SMALLER PHONES: keep same bracket vision, just scale sizes a bit */
+@media (max-width: 768px){
+  .bracket-page{
+    padding:0 10px;
+    box-sizing:border-box;
+  }
+
+  .bracket-admin-bar{
+    padding:12px;
+  }
 
   .bracket-container{
-    grid-template-columns:1fr;
-    gap:18px;
-  }
-
-  .connector{
-    display:none;
-  }
-
-  .side-left,
-  .side-right,
-  .final-wrap{
-    align-items:stretch;
+    min-width:920px;
+    grid-template-columns:230px 110px 210px 110px 230px;
   }
 
   .b-slot,
   .b-final-slot{
-    min-width:0;
-    width:100%;
+    min-width:190px;
+    min-height:58px;
+    padding:12px 14px;
+  }
+
+  .b-final-slot{
+    min-width:210px;
+    min-height:64px;
   }
 
   .b-name,
@@ -667,18 +733,32 @@ const styles = `
     font-size:13px;
   }
 
+  .b-score,
+  .b-final-score{
+    font-size:16px;
+  }
+
   .b-logo-wrap{
-    width:38px;
-    height:38px;
-    min-width:38px;
+    width:28px;
+    height:28px;
+    min-width:28px;
   }
 
   .b-logo,
   .b-final-logo{
-    width:30px;
-    height:30px;
+    width:20px;
+    height:20px;
   }
 
+  .connector{
+    width:110px;
+    height:180px;
+  }
+
+  .champion-box{
+    width:160px;
+    min-height:80px;
+  }
 }
 `;
 
@@ -1089,10 +1169,11 @@ function BracketView() {
           )}
         </div>
 
-        <div className="bracket-container">
+        <div className="bracket-scroll">
+          <div className="bracket-container">
           <div className="bracket-side side-left">
             <div style={{textAlign:"right"}}>
-  <div className="b-label">نصف النهاية 1</div>
+  <div className="b-label">نصف النهائي 1</div>
   <div style={{fontSize:"12px", color:"var(--gray)", marginBottom:"6px", lineHeight:"1.8"}}>
      الجمعة 23 رمضان &nbsp;|&nbsp;  16:45 &nbsp;|&nbsp;  القاعة المغطاة العودة
   </div>
@@ -1160,7 +1241,7 @@ function BracketView() {
 
           <div className="bracket-side side-right">
             <div style={{textAlign:"left"}}>
-  <div className="b-label">نصف النهاية 2</div>
+  <div className="b-label">نصف النهائي 2</div>
   <div style={{fontSize:"12px", color:"var(--gray)", marginBottom:"6px", lineHeight:"1.8"}}>
      الجمعة 23 رمضان &nbsp;|&nbsp;  18:00 &nbsp;|&nbsp;  القاعة المغطاة العودة
   </div>
@@ -1185,6 +1266,8 @@ function BracketView() {
             </div>
           </div>
         </div>
+        </div>
+
 
         {champion && <div className="champion-banner">🥇 البطل: {champion} 🥇</div>}
       </div>
