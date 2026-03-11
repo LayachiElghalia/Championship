@@ -328,6 +328,358 @@ const styles = `
 .btn-logout:hover { background:rgba(229,62,62,0.15); color:#fc8181; }
 .pw-error { font-size:12px; color:#fc8181; }
   }
+
+/* BRACKET PAGE */
+.bracket-page{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:28px;
+}
+
+.bracket-admin-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px 18px;
+  flex-wrap:wrap;
+  width:100%;
+  max-width:1100px;
+}
+
+.bracket-admin-bar.open{
+  border-color:rgba(0,166,81,0.3);
+  background:rgba(0,166,81,0.05);
+}
+
+/* MAIN GRID */
+.bracket-container{
+  width:100%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:270px 140px 250px 140px 270px;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  direction:ltr;
+}
+
+/* SIDES */
+.bracket-side{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.side-left{align-items:flex-end;}
+.side-right{align-items:flex-start;}
+
+.b-label,
+.b-final-label{
+  font-size:12px;
+  font-weight:800;
+  color:var(--gold);
+  letter-spacing:1px;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+/* MATCH GROUPS */
+.b-match,
+.b-final{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* TEAM AREA */
+.b-team{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:1;
+  min-width:0;
+}
+
+/* LOGO CONTAINER */
+.b-logo-wrap{
+  width:70px;
+  height:70px;
+  min-width:70px;
+
+  border-radius:50%;
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(0,166,81,0.3);
+  border:1px solid rgba(255,255,255,0.14);
+}
+
+/* LOGO IMAGE */
+.b-logo,
+.b-final-logo{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+}
+
+/* MATCH BOXES */
+.b-slot,
+.b-final-slot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+
+  min-height:64px;
+  padding:14px 18px;
+  min-width:220px;
+
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.04);
+
+  border-radius:12px;
+}
+
+/* FINAL SLOT */
+.b-final-slot{
+  min-height:70px;
+  min-width:240px;
+
+  border-color:rgba(245,166,35,0.38);
+  background:rgba(245,166,35,0.06);
+}
+
+/* WINNER STYLE */
+.b-slot.winner{
+  background:rgba(0,166,81,0.14);
+  border-color:rgba(0,166,81,0.45);
+}
+
+.b-final-slot.winner{
+  background:rgba(245,166,35,0.14);
+  border-color:rgba(245,166,35,0.65);
+}
+
+/* LOSER STYLE */
+.b-slot.loser{opacity:0.55;}
+.b-final-slot.loser{opacity:0.6;}
+
+/* TEAM NAME */
+.b-name,
+.b-final-name{
+  flex:1;
+  min-width:0;
+  font-size:14px;
+  font-weight:700;
+  color:var(--white);
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+
+  direction:rtl;
+  text-align:right;
+}
+
+.b-final-name{
+  font-size:15px;
+}
+
+/* SCORE */
+.b-score,
+.b-final-score{
+  min-width:24px;
+  text-align:center;
+  font-size:17px;
+  font-weight:900;
+}
+
+.b-score{color:var(--green);}
+.b-final-score{color:var(--gold);}
+
+.b-score.dim,
+.b-final-score.dim{
+  color:var(--gray);
+}
+
+/* SCORE INPUT */
+.b-score-input{
+  width:40px;
+  height:30px;
+
+  background:rgba(255,255,255,0.07);
+  border:1px solid var(--border);
+
+  color:var(--white);
+  font-family:'Tajawal',sans-serif;
+  font-size:14px;
+  font-weight:900;
+  text-align:center;
+
+  border-radius:8px;
+  outline:none;
+  -moz-appearance:textfield;
+}
+
+.b-score-input::-webkit-inner-spin-button,
+.b-score-input::-webkit-outer-spin-button{
+  -webkit-appearance:none;
+}
+
+.b-score-input:focus{
+  border-color:var(--green);
+}
+
+/* FINAL WRAP */
+.final-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+/* CONNECTORS */
+.connector{
+  position:relative;
+  height:200px;
+  width:140px;
+}
+
+.connector .line{
+  position:absolute;
+  background:rgba(255,255,255,0.3);
+}
+
+/* LEFT CONNECTOR */
+.connector-left .line.h.top{
+  top:42px;
+  right:0;
+  width:55%;
+  height:2px;
+}
+
+.connector-left .line.h.bottom{
+  bottom:42px;
+  right:0;
+  width:55%;
+  height:2px;
+}
+
+.connector-left .line.v{
+  top:42px;
+  bottom:42px;
+  right:55%;
+  width:2px;
+}
+
+.connector-left .line.h.mid{
+  top:50%;
+  right:55%;
+  width:45%;
+  height:2px;
+  transform:translateY(-50%);
+}
+
+/* RIGHT CONNECTOR */
+.connector-right .line.h.top{
+  top:42px;
+  left:0;
+  width:55%;
+  height:2px;
+}
+
+.connector-right .line.h.bottom{
+  bottom:42px;
+  left:0;
+  width:55%;
+  height:2px;
+}
+
+.connector-right .line.v{
+  top:42px;
+  bottom:42px;
+  left:55%;
+  width:2px;
+}
+
+.connector-right .line.h.mid{
+  top:50%;
+  left:55%;
+  width:45%;
+  height:2px;
+  transform:translateY(-50%);
+}
+
+/* CHAMPION BANNER */
+.champion-banner{
+  text-align:center;
+  padding:13px 22px;
+  font-size:15px;
+  font-weight:900;
+  color:var(--gold);
+
+  background:rgba(245,166,35,0.08);
+  border:1px solid rgba(245,166,35,0.25);
+  border-radius:12px;
+
+  animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 8px rgba(245,166,35,0.35); }
+  to{ text-shadow:0 0 24px rgba(245,166,35,0.9); }
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+  .bracket-container{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .connector{
+    display:none;
+  }
+
+  .side-left,
+  .side-right,
+  .final-wrap{
+    align-items:stretch;
+  }
+
+  .b-slot,
+  .b-final-slot{
+    min-width:0;
+    width:100%;
+  }
+
+  .b-name,
+  .b-final-name{
+    font-size:13px;
+  }
+
+  .b-logo-wrap{
+    width:38px;
+    height:38px;
+    min-width:38px;
+  }
+
+  .b-logo,
+  .b-final-logo{
+    width:30px;
+    height:30px;
+  }
+
+}
 `;
 
 // ─── Shared components ────────────────────────────────────────────────────────
@@ -604,6 +956,242 @@ const [results, setResults] = useState({});
   );
 }
 
+function BracketView() {
+  const [sf1, setSf1] = useState({ home: "", away: "" });
+  const [sf2, setSf2] = useState({ home: "", away: "" });
+  const [fin, setFin] = useState({ home: "", away: "" });
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [pw, setPw] = useState("");
+  const [pwErr, setPwErr] = useState("");
+
+  const login = () => {
+    if (pw === ADMIN_PASSWORD) {
+      setIsAdmin(true);
+      setPwErr("");
+      setPw("");
+    } else {
+      setPwErr("كلمة المرور غير صحيحة ❌");
+    }
+  };
+
+  const sf1t1 = "نجوم بن المهدي";
+  const sf1t2 = "المعهد";
+  const sf2t1 = "المساعدة الطبية";
+  const sf2t2 = "شباب بن المهدي";
+
+  // put your real image paths here
+  const logos = {
+    "نجوم بن المهدي": nojom,
+    "المعهد": ispits,
+    "المساعدة الطبية": samu,
+    "شباب بن المهدي":chababbm,
+    "المتأهل 1": "",
+    "المتأهل 2": "",
+    "؟": "",
+  };
+
+  const getWinner = (score, t1, t2) => {
+    const h = parseInt(score.home);
+    const a = parseInt(score.away);
+
+    if (isNaN(h) || isNaN(a) || score.home === "" || score.away === "") return null;
+    if (h > a) return t1;
+    if (a > h) return t2;
+    return null;
+  };
+
+  const w1 = getWinner(sf1, sf1t1, sf1t2);
+  const w2 = getWinner(sf2, sf2t1, sf2t2);
+  const champion = getWinner(fin, w1 || "المتأهل 1", w2 || "المتأهل 2");
+
+  const Slot = ({ score, setScore, name, side, t1, t2, isFinal = false }) => {
+    const hasScore = score.home !== "" && score.away !== "";
+    const winner = getWinner(score, t1, t2);
+    const isWinner = winner === name;
+    const isLoser = winner && winner !== name;
+    const scoreVal = side === "home" ? score.home : score.away;
+
+    const slotCls = isFinal
+      ? `b-final-slot${isWinner ? " winner" : isLoser ? " loser" : ""}`
+      : `b-slot${isWinner ? " winner" : isLoser ? " loser" : ""}`;
+
+    const nameCls = isFinal ? "b-final-name" : "b-name";
+    const scoreCls = isFinal
+      ? `b-final-score${isLoser ? " dim" : ""}`
+      : `b-score${isLoser ? " dim" : ""}`;
+
+    const logoSrc = logos[name] || "/logos/placeholder.png";
+
+    return (
+      <div className={slotCls}>
+        <div className="b-team">
+          <div className="b-logo-wrap">
+            <img
+              src={logoSrc}
+              alt={name}
+              className={isFinal ? "b-final-logo" : "b-logo"}
+            />
+          </div>
+          <span className={nameCls}>{name}</span>
+        </div>
+
+        {isAdmin ? (
+          <input
+            className="b-score-input"
+            type="number"
+            min="0"
+            max="99"
+            value={scoreVal}
+            onChange={(e) => setScore((p) => ({ ...p, [side]: e.target.value }))}
+          />
+        ) : hasScore ? (
+          <span className={scoreCls}>{scoreVal}</span>
+        ) : null}
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      <div className="page-title">🏅 الأدوار الإقصائية</div>
+
+      <div className="bracket-page">
+        <div className={`bracket-admin-bar${isAdmin ? " open" : ""}`}>
+          <div className={`admin-label${isAdmin ? " on" : ""}`}>
+            <span>{isAdmin ? "🔓" : "🔒"}</span>
+            {isAdmin ? "وضع المشرف مفعّل" : "دخول المشرف لإدخال النتائج"}
+          </div>
+
+          {!isAdmin ? (
+            <div className="pw-group">
+              <div className="pw-row">
+                <input
+                  className="pw-input"
+                  type="password"
+                  placeholder="كلمة المرور"
+                  value={pw}
+                  onChange={(e) => {
+                    setPw(e.target.value);
+                    setPwErr("");
+                  }}
+                  onKeyDown={(e) => e.key === "Enter" && login()}
+                />
+                <button className="btn-green" onClick={login}>
+                  دخول
+                </button>
+              </div>
+              {pwErr && <div className="pw-error">{pwErr}</div>}
+            </div>
+          ) : (
+            <button className="btn-logout" onClick={() => setIsAdmin(false)}>
+              خروج 🚪
+            </button>
+          )}
+        </div>
+
+        <div className="bracket-container">
+          <div className="bracket-side side-left">
+            <div style={{textAlign:"right"}}>
+  <div className="b-label">نصف النهاية 1</div>
+  <div style={{fontSize:"12px", color:"var(--gray)", marginBottom:"6px", lineHeight:"1.8"}}>
+     الجمعة 23 رمضان &nbsp;|&nbsp;  16:45 &nbsp;|&nbsp;  القاعة المغطاة العودة
+  </div>
+</div>
+            <div className="b-match">
+              <Slot
+                score={sf1}
+                setScore={setSf1}
+                name={sf1t1}
+                side="home"
+                t1={sf1t1}
+                t2={sf1t2}
+              />
+              <Slot
+                score={sf1}
+                setScore={setSf1}
+                name={sf1t2}
+                side="away"
+                t1={sf1t1}
+                t2={sf1t2}
+              />
+            </div>
+          </div>
+
+          <div className="connector connector-left" aria-hidden="true">
+            <span className="line h top" />
+            <span className="line v" />
+            <span className="line h mid" />
+            <span className="line h bottom" />
+          </div>
+
+          <div className="final-wrap">
+            <div className="b-final-label">🏆 النهائي</div>
+<div style={{fontSize:"12px", color:"var(--gray)", marginBottom:"6px", textAlign:"center", lineHeight:"1.8"}}>
+   السبت 24 رمضان &nbsp;|&nbsp;  22:00 &nbsp;|&nbsp;  القاعة المغطاة العودة
+</div>
+            <div className="b-final">
+              <Slot
+                score={fin}
+                setScore={setFin}
+                name={w1 || "المتأهل 1"}
+                side="home"
+                t1={w1 || "المتأهل 1"}
+                t2={w2 || "المتأهل 2"}
+                isFinal
+              />
+              <Slot
+                score={fin}
+                setScore={setFin}
+                name={w2 || "المتأهل 2"}
+                side="away"
+                t1={w1 || "المتأهل 1"}
+                t2={w2 || "المتأهل 2"}
+                isFinal
+              />
+            </div>
+          </div>
+
+          <div className="connector connector-right" aria-hidden="true">
+            <span className="line h top" />
+            <span className="line v" />
+            <span className="line h mid" />
+            <span className="line h bottom" />
+          </div>
+
+          <div className="bracket-side side-right">
+            <div style={{textAlign:"left"}}>
+  <div className="b-label">نصف النهاية 2</div>
+  <div style={{fontSize:"12px", color:"var(--gray)", marginBottom:"6px", lineHeight:"1.8"}}>
+     الجمعة 23 رمضان &nbsp;|&nbsp;  18:00 &nbsp;|&nbsp;  القاعة المغطاة العودة
+  </div>
+</div>
+            <div className="b-match">
+              <Slot
+                score={sf2}
+                setScore={setSf2}
+                name={sf2t1}
+                side="home"
+                t1={sf2t1}
+                t2={sf2t2}
+              />
+              <Slot
+                score={sf2}
+                setScore={setSf2}
+                name={sf2t2}
+                side="away"
+                t1={sf2t1}
+                t2={sf2t2}
+              />
+            </div>
+          </div>
+        </div>
+
+        {champion && <div className="champion-banner">🥇 البطل: {champion} 🥇</div>}
+      </div>
+    </div>
+  );
+}
+
 // ─── Footer ───────────────────────────────────────────────────────────────────
 function Footer() {
   const owners = [
@@ -641,6 +1229,7 @@ export default function App() {
     { key: "all",      label: "📋 البرنامج الكامل" },
     { key: "results",  label: "🏆 النتائج والترتيب" },
     { key: "teams",    label: "👥 الفرق" },
+    { key: "bracket", label: "🏅 الأدوار الإقصائية" },
   ];
 
   return (
@@ -673,6 +1262,7 @@ export default function App() {
           {page === "all"      && <AllRoundsView />}
           {page === "results"  && <ResultsView />}
           {page === "teams"    && <TeamsView />}
+          {page === "bracket" && <BracketView />}
         </div>
 
 
