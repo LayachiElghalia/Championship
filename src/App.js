@@ -1175,7 +1175,7 @@ function BracketView() {
             <div style={{textAlign:"right"}}>
   <div className="b-label">نصف النهائي 1</div>
   <div style={{fontSize:"12px", color:"var(--gray)", marginBottom:"6px", lineHeight:"1.8"}}>
-     الجمعة 23 رمضان &nbsp;|&nbsp;  16:45 &nbsp;|&nbsp;  القاعة المغطاة العودة
+     الجمعة 23 رمضان &nbsp;|&nbsp;  22:45 &nbsp;|&nbsp;  القاعة المغطاة العودة
   </div>
 </div>
             <div className="b-match">
@@ -1243,7 +1243,7 @@ function BracketView() {
             <div style={{textAlign:"left"}}>
   <div className="b-label">نصف النهائي 2</div>
   <div style={{fontSize:"12px", color:"var(--gray)", marginBottom:"6px", lineHeight:"1.8"}}>
-     الجمعة 23 رمضان &nbsp;|&nbsp;  18:00 &nbsp;|&nbsp;  القاعة المغطاة العودة
+     الجمعة 23 رمضان &nbsp;|&nbsp;  23:45 &nbsp;|&nbsp;  القاعة المغطاة العودة
   </div>
 </div>
             <div className="b-match">
